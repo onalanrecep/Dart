@@ -46,6 +46,15 @@ void main() {
       print('Tekrar deneyiniz');
     }
   }
+  print('__________________' * 20);
+  print('Pratik Liste');
+  List<User> kullanicilar = [User('Ahmet', 5600), User('Arzu', 1200)];
+  //User sınıfını liste olarak dolaşma
+  for (User kullanici in kullanicilar) {
+    print(kullanici.name);
+  }
+  //User sınıfını map olarak dolaşma
+  kullanicilar.map((kullanici) => print(kullanici.name)).toList();
 }
 
 class User {
