@@ -1,3 +1,5 @@
+import 'model/user_model.dart';
+
 void main() {
   int? money;
   if (money != null) {
@@ -30,9 +32,9 @@ void main() {
     print(result);
   }
   print('___________________________');
-  User user1 = User('Reko', 1200, age: 37, city: 'Bingöl');
-  User user2 = User('Hiko', 120);
-  final user3 = User('Rufi', 256);
+  User user1 = User('Reko', 1200, age: 37, city: 'Bingöl', id: 'dsdfh');
+  User user2 = User(id: 'sds', 'Hiko', 120);
+  final user3 = User(id: '12', 'Rufi', 256);
   print(user3.name);
   print(user1.userCode);
   print('____________' * 10);
@@ -48,32 +50,39 @@ void main() {
   }
   print('__________________' * 20);
   print('Pratik Liste');
-  List<User> kullanicilar = [User('Ahmet', 5600), User('Arzu', 1200)];
+  List<User> kullanicilar = [
+    User('Ahmet', 5600, id: 'asd'),
+    User('Arzu', 1200, id: 'dsds')
+  ];
   //User sınıfını liste olarak dolaşma
   for (User kullanici in kullanicilar) {
     print(kullanici.name);
   }
   //User sınıfını map olarak dolaşma
   kullanicilar.map((kullanici) => print(kullanici.name)).toList();
+
+  //müşteri id'si 12 olana indirim yap
+  if (user3.isSpecialUser('12')) {
+    print(user3.money);
+    user3.money += 5;
+    print('Hesabınıza para eklendi');
+    print('hesabınıza para eklendikten sonraki durum ${user3.money}');
+  }
 }
 
-class User {
+class User2 {
   // adı olmak zorunda
   // parası olmak zorunda
   // yaşını vermek zorunda değil
   // city vermek zorunda değil
-  late final String name;
-  late final int money;
-  late final int? age;
-  late final String? city;
+  final String name;
+  final int money;
+  final int? age;
+  final String? city;
 
   late final String userCode;
 
-  User(String name, int money, {int? age, String? city}) {
-    this.name = name;
-    this.money = money;
-    this.age = age;
-    this.city = city;
+  User2(this.name, this.money, {this.age, this.city}) {
     userCode = (city ?? 'istanbul') + name;
   }
 }
